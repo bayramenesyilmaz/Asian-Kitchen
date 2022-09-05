@@ -84,20 +84,20 @@ const menu = [
 
 //menülerin ülkelere göre ayrılması
 
-let china = menu.filter(menu=>{
-  if(menu.category === "China"){
+let china = menu.filter(menu => {
+  if (menu.category === "China") {
     return menu;
   }
 });
 
-let japan = menu.filter(menu=>{
-  if(menu.category === "Japan"){
+let japan = menu.filter(menu => {
+  if (menu.category === "Japan") {
     return menu;
   }
 });
 
-let korea = menu.filter(menu=>{
-  if(menu.category === "Korea"){
+let korea = menu.filter(menu => {
+  if (menu.category === "Korea") {
     return menu;
   }
 });
@@ -108,26 +108,26 @@ document.addEventListener("DOMContentLoaded", ekran);
 
 
 
-function ekran(){
+function ekran() {
 
   //butonlar
-  let btnAll=document.createElement("button");
-  btnAll.classList.add("btn-item","btn","btn-outline-dark");
+  let btnAll = document.createElement("button");
+  btnAll.classList.add("btn-item", "btn", "btn-outline-dark");
   btnAll.innerHTML = "All";
   butonDiv.append(btnAll);
 
-  let btnKorea=document.createElement("button");
-  btnKorea.classList.add("btn-item","btn","btn-outline-dark");
+  let btnKorea = document.createElement("button");
+  btnKorea.classList.add("btn-item", "btn", "btn-outline-dark");
   btnKorea.innerHTML = "Korea";
   butonDiv.append(btnKorea);
-  
-  let btnJapan=document.createElement("button");
-  btnJapan.classList.add("btn-item","btn","btn-outline-dark");
+
+  let btnJapan = document.createElement("button");
+  btnJapan.classList.add("btn-item", "btn", "btn-outline-dark");
   btnJapan.innerHTML = "Japan";
   butonDiv.append(btnJapan);
-  
-  let btnChina=document.createElement("button");
-  btnChina.classList.add("btn-item","btn","btn-outline-dark");
+
+  let btnChina = document.createElement("button");
+  btnChina.classList.add("btn-item", "btn", "btn-outline-dark");
   btnChina.innerHTML = "China";
   butonDiv.append(btnChina);
 
@@ -139,78 +139,63 @@ function ekran(){
 
   allMenu();
 
-  function allMenu(){
+  function allMenu() {
     menuDiv.innerHTML = "";
-    menu.forEach(menu=>{
-      createMenu(menu.img,menu.title,menu.price,menu.desc);
+    menu.forEach(menu => {
+      createMenu(menu.img, menu.title, menu.price, menu.desc);
     })
   }
 
-  function koreaMenu(){
+  function koreaMenu() {
     menuDiv.innerHTML = "";
-    korea.forEach(menu=>{
-      createMenu(menu.img,menu.title,menu.price,menu.desc);
+    korea.forEach(menu => {
+      createMenu(menu.img, menu.title, menu.price, menu.desc);
     })
   }
 
-  function japanMenu(){
+  function japanMenu() {
     menuDiv.innerHTML = "";
-    japan.forEach(menu=>{
-      createMenu(menu.img,menu.title,menu.price,menu.desc);
+    japan.forEach(menu => {
+      createMenu(menu.img, menu.title, menu.price, menu.desc);
     })
   }
 
-  function chinaMenu(){
+  function chinaMenu() {
     menuDiv.innerHTML = "";
-    china.forEach(menu=>{
-      createMenu(menu.img,menu.title,menu.price,menu.desc);
+    china.forEach(menu => {
+      createMenu(menu.img, menu.title, menu.price, menu.desc);
     })
   }
 
   //MENU OLUŞTURMA FONKSİYONU
 
-  function createMenu(photo,baslik,fiyat,aciklama){
+  function createMenu(photo, baslik, fiyat, aciklama) {
 
     let menuDiv = document.querySelector("#photo");
 
+
     let menuItems = document.createElement("div");
     menuItems.classList.add("menu-items");
-    
 
-    let photos = document.createElement("img");
-    photos.classList.add("photo");
-    photos.src = `${photo}`;
-   
+    menuItems.innerHTML = `
 
-    let menuInfo = document.createElement("div");
-    menuInfo.classList.add("menu-info");
-    
+     <img class="photo" src=${photo} alt="">
 
-    let menuTitle = document.createElement("div");
-    menuTitle.classList.add("menu-title");
-    
+    <div class="menu-info">
 
-    let h4Baslik = document.createElement("h4");
-    h4Baslik.innerText = `${baslik}`;
-    
+      <div class="menu-title">
+        <h4>${baslik}</h4>
+        <h4>${fiyat}</h4>
+      </div>
+      <p class="menu-text">${aciklama}</p>
 
-    let h4Fiyat = document.createElement("h4");
-    h4Fiyat.innerText = `${fiyat}`;
-    
+    </div> 
+  
+    `
 
-    let menuText = document.createElement("p");
-    menuText.classList.add("menu-text");
-    menuText.innerText = `${aciklama}`;
-
-    menuTitle.appendChild(h4Baslik);
-    menuTitle.appendChild(h4Fiyat);
-    menuInfo.appendChild(menuTitle);
-    menuInfo.appendChild(menuText);
-    menuItems.appendChild(photos);
-    menuItems.appendChild(menuInfo);
     menuDiv.appendChild(menuItems);
 
   }
-  
-  
+
+
 }
